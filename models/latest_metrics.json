@@ -1,5 +1,5 @@
 {
-  "test_avg_hits_top10_main": 1.5625,
-  "test_hit_rate_any_top10_main": 0.8541666666666666,
-  "test_special_acc_top3": 0.2916666666666667
+  "test_avg_hits_top10_main": 1.3541666666666667,
+  "test_hit_rate_any_top10_main": 0.7708333333333334,
+  "test_special_acc_top3": 0.3125
 }

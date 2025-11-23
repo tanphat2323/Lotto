@@ -112,10 +112,22 @@ class VietlottScraper:
         updates_count = 0
         for res in new_results:
             # Check if ID exists
-            # Ensure 'id' column is treated as string for comparison
-            if str(res['id']) in df['id'].astype(str).values:
-                logger.info(f"Draw {res['id']} already exists. Skipping.")
-                continue
+            # Convert both to integers for robust comparison
+            try:
+                new_id = int(res['id'])
+                # Pandas reads 'id' as int if all are numbers, so df['id'] is likely int64
+                # But to be safe, we check against values converted to int
+                # Use a set for faster lookup
+                existing_ids = set(df['id'].astype(int).values)
+
+                if new_id in existing_ids:
+                    logger.info(f"Draw {res['id']} already exists. Skipping.")
+                    continue
+            except ValueError:
+                # If ID is not numeric, fallback to string comparison
+                if str(res['id']) in df['id'].astype(str).values:
+                    logger.info(f"Draw {res['id']} already exists. Skipping.")
+                    continue
 
             # Add new row
             new_row = {
