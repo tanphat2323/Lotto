@@ -1,7 +1,5 @@
 # Lotto 5/35 AI Predictive System (MVP)
 
-*[Tiếng Việt]: Xem hướng dẫn cài đặt chi tiết tại [GUIDE_VI.md](GUIDE_VI.md)*
-
 This project is an AI-powered prediction engine for the "Lotto 5/35" lottery game. It uses a **Bidirectional LSTM** neural network to analyze historical draw sequences and predict the most likely numbers for the next draw.
 
 ## Features (Phase 1 MVP)
