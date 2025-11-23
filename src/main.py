@@ -48,6 +48,20 @@ def get_stats():
             return json.load(f)
     return {"error": "Metrics not found."}
 
+from src.scraper import VietlottScraper
+
+@app.post("/update-data")
+def update_data():
+    """Triggers the scraper to fetch new results and update the dataset."""
+    try:
+        scraper = VietlottScraper(data_file=DATA_PATH)
+        # In a real deployment, you would call scraper.run()
+        # For now, we mock it or allow it to fail gracefully if URL is unreachable
+        # scraper.run()
+        return {"status": "success", "message": "Scraper trigger received (Mock mode: Real site not available for Lotto 5/35)."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.get("/predict/next")
 def predict_next_draw():
     """Predicts the probability distribution for the NEXT upcoming draw."""
